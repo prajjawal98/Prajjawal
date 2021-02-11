@@ -31,7 +31,7 @@ public class DriverUtility {
         System.setProperty("webdriver.chrome.driver", OpenBrowser.CHROME_DRIVER_PATH);
       //  System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver.exe");
         ChromeOptions opt = new ChromeOptions();
-        opt.setBinary("/usr/bin//google-chrome.exe");  //chrome binary location specified here
+        opt.setBinary("//usr//bin//google-chrome");  //chrome binary location specified here
         opt.addArguments("start-maximized");
         opt.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
         opt.setExperimentalOption("useAutomationExtension", false);
