@@ -36,10 +36,18 @@ public class DriverUtility {
         //opt.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
         //opt.setExperimentalOption("useAutomationExtension", false);
        // chrome_options.add_argument('--headless')
-        opt.addArguments("--no-sandbox");
-        opt.addArguments("--headless");
-        opt.addArguments("--disable-dev-shm-usage");
         System.setProperty("webdriver.chrome.driver", OpenBrowser.CHROME_DRIVER_PATH);
+       // System.setProperty("webdriver.chrome.driver", "C:\\path\\to\\chromedriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("start-maximized"); // open Browser in maximized mode
+        options.addArguments("disable-infobars"); // disabling infobars
+        options.addArguments("--disable-extensions"); // disabling extensions
+        options.addArguments("--disable-gpu"); // applicable to windows os only
+        options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+        options.addArguments("--no-sandbox"); // Bypass OS security model
+       // WebDriver driver = new ChromeDriver(options);
+       // driver.get("https://google.com");
+        //System.setProperty("webdriver.chrome.driver", OpenBrowser.CHROME_DRIVER_PATH);
         //chrome_options.add_argument('--disable-dev-shm-usage')
         //d = webdriver.Chrome('/home/PycharmProjects/chromedriver',chrome_options=chrome_options)
        // WebDriver driver = new ChromeDriver(opt);
