@@ -28,13 +28,20 @@ public class DriverUtility {
 
 
     private DriverUtility() throws Exception {
-        System.setProperty("webdriver.chrome.driver", OpenBrowser.CHROME_DRIVER_PATH);
-      //  System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver.exe");
+
+        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver.exe");
         ChromeOptions opt = new ChromeOptions();
-        opt.setBinary("//usr//bin//google-chrome");  //chrome binary location specified here
-        opt.addArguments("start-maximized");
-        opt.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-        opt.setExperimentalOption("useAutomationExtension", false);
+        //opt.setBinary("//usr//bin//google-chrome");  //chrome binary location specified here
+        //opt.addArguments("start-maximized");
+        //opt.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+        //opt.setExperimentalOption("useAutomationExtension", false);
+       // chrome_options.add_argument('--headless')
+        opt.addArguments("--no-sandbox");
+        opt.addArguments("--headless");
+        opt.addArguments("--disable-dev-shm-usage");
+        System.setProperty("webdriver.chrome.driver", OpenBrowser.CHROME_DRIVER_PATH);
+        //chrome_options.add_argument('--disable-dev-shm-usage')
+        //d = webdriver.Chrome('/home/PycharmProjects/chromedriver',chrome_options=chrome_options)
        // WebDriver driver = new ChromeDriver(opt);
        // driver.get("https://www.google.com/");
         Properties prop = new Properties();
