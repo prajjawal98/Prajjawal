@@ -7,6 +7,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -14,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -27,6 +29,14 @@ public class DriverUtility {
 
     private DriverUtility() throws Exception {
         System.setProperty("webdriver.chrome.driver", OpenBrowser.CHROME_DRIVER_PATH);
+      //  System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver.exe");
+        ChromeOptions opt = new ChromeOptions();
+        opt.setBinary("/usr/bin//google-chrome.exe");  //chrome binary location specified here
+        opt.addArguments("start-maximized");
+        opt.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+        opt.setExperimentalOption("useAutomationExtension", false);
+       // WebDriver driver = new ChromeDriver(opt);
+       // driver.get("https://www.google.com/");
         Properties prop = new Properties();
         FileInputStream FileInputStream = new FileInputStream(
                 new File("src/main/resources/object.properties"));
