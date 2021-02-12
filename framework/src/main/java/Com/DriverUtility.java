@@ -75,7 +75,7 @@ public class DriverUtility {
 
 
             System.out.println("**Launching Chrome Browser**");
-           // takeScreenshot("screen");
+            takeScreenshot("screen");
             //WebDriverWait wait=new WebDriverWait(driver, 20);
             driver.findElement(By.cssSelector(urlKeys.get(OpenBrowser.FORGET_USERNAME_BUTTON_KEY))).click();
 
@@ -120,10 +120,11 @@ public class DriverUtility {
         return new DriverUtility();
     }
 
-   /* public static void takeScreenshot(String filename) throws IOException {
-        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(file, new File("src/main/java/Screenshot/" + filename + ".jpg"));
-    }*/
+     public static void takeScreenshot(String filename) throws IOException {
+         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+         FileUtils.copyFile(file, new File("src/main/java/Screenshot/" + filename + ".jpg"));
+     }
+
 
 
 }
