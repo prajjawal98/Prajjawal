@@ -5,17 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Collections;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -29,12 +26,25 @@ public class DriverUtility {
 
     private DriverUtility() throws Exception {
 
-        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver.exe");
-       // ChromeOptions opt = new ChromeOptions();
+       // System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver.exe");
+
+
 
         System.setProperty("webdriver.chrome.driver", OpenBrowser.CHROME_DRIVER_PATH);
-       // System.setProperty("webdriver.chrome.driver", "C:\\path\\to\\chromedriver.exe");
-      //  ChromeOptions options = new ChromeOptions();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("headless");
+        options.addArguments("start-maximized"); // open Browser in maximized mode
+        options.addArguments("disable-infobars"); // disabling infobars
+        options.addArguments("--disable-extensions"); // disabling extensions
+        options.addArguments("--disable-gpu"); // applicable to windows os only
+        options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+        options.addArguments("--no-sandbox");
+
+
+
+
+        //driver.get("url1");
+
 
         Properties prop = new Properties();
         FileInputStream FileInputStream = new FileInputStream(
@@ -60,29 +70,31 @@ public class DriverUtility {
     boolean performTest(String parsedEmailId) throws InterruptedException, IOException {
         try {
 
-
             driver.get(OpenBrowser.URL1);
+
+
+
             System.out.println("**Launching Chrome Browser**");
-            takeScreenshot("screen");
+           // takeScreenshot("screen");
             //WebDriverWait wait=new WebDriverWait(driver, 20);
             driver.findElement(By.cssSelector(urlKeys.get(OpenBrowser.FORGET_USERNAME_BUTTON_KEY))).click();
 
             //Thread.sleep(1000);
 
             driver.findElement(By.cssSelector(urlKeys.get(OpenBrowser.ENTER_EMAIL_KEY))).sendKeys(parsedEmailId);
-            takeScreenshot("enteremail");
+           // takeScreenshot("enteremail");
             //Thread.sleep(1000);
             driver.findElement(By.cssSelector(urlKeys.get(OpenBrowser.SEND_EMAIL_BUTTON_KEY))).click();
-            takeScreenshot("sentemailscreen");
+           // takeScreenshot("sentemailscreen");
             //Thread.sleep(1000);
             driver.get(OpenBrowser.URL2);
             driver.findElement(By.cssSelector(urlKeys.get(OpenBrowser.ENTER_EMAIL1_KEY))).clear();
             driver.findElement(By.cssSelector(urlKeys.get(OpenBrowser.ENTER_EMAIL1_KEY))).sendKeys(parsedEmailId);
             //Thread.sleep(1000);
-            takeScreenshot("enteryopemail");
+            //takeScreenshot("enteryopemail");
             driver.findElement(By.cssSelector(urlKeys.get(OpenBrowser.SEND_EMAIL1_BUTTON_KEY))).click();
             //Thread.sleep(2000);
-            takeScreenshot("usernamescreen");
+           // takeScreenshot("usernamescreen");
             driver.switchTo().frame("ifmail");
             driver.findElement(By.cssSelector("div[class='f16")).isDisplayed();
             //driver.findElement(By.cssSelector(urlKeys.get(OpenBrowser.USERNAME_TEXT_KEY))).isDisplayed();
@@ -108,10 +120,10 @@ public class DriverUtility {
         return new DriverUtility();
     }
 
-    public static void takeScreenshot(String filename) throws IOException {
+   /* public static void takeScreenshot(String filename) throws IOException {
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file, new File("src/main/java/Screenshot/" + filename + ".jpg"));
-    }
+    }*/
 
 
 }
