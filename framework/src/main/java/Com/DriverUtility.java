@@ -30,28 +30,12 @@ public class DriverUtility {
     private DriverUtility() throws Exception {
 
         System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver.exe");
-        ChromeOptions opt = new ChromeOptions();
-        //opt.setBinary("//usr//bin//google-chrome");  //chrome binary location specified here
-        //opt.addArguments("start-maximized");
-        //opt.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-        //opt.setExperimentalOption("useAutomationExtension", false);
-       // chrome_options.add_argument('--headless')
+       // ChromeOptions opt = new ChromeOptions();
+
         System.setProperty("webdriver.chrome.driver", OpenBrowser.CHROME_DRIVER_PATH);
        // System.setProperty("webdriver.chrome.driver", "C:\\path\\to\\chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized"); // open Browser in maximized mode
-        options.addArguments("disable-infobars"); // disabling infobars
-        options.addArguments("--disable-extensions"); // disabling extensions
-        options.addArguments("--disable-gpu"); // applicable to windows os only
-        options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-        options.addArguments("--no-sandbox"); // Bypass OS security model
-       // WebDriver driver = new ChromeDriver(options);
-       // driver.get("https://google.com");
-        //System.setProperty("webdriver.chrome.driver", OpenBrowser.CHROME_DRIVER_PATH);
-        //chrome_options.add_argument('--disable-dev-shm-usage')
-        //d = webdriver.Chrome('/home/PycharmProjects/chromedriver',chrome_options=chrome_options)
-       // WebDriver driver = new ChromeDriver(opt);
-       // driver.get("https://www.google.com/");
+      //  ChromeOptions options = new ChromeOptions();
+
         Properties prop = new Properties();
         FileInputStream FileInputStream = new FileInputStream(
                 new File("src/main/resources/object.properties"));
