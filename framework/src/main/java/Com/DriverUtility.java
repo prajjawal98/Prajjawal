@@ -32,7 +32,9 @@ public class DriverUtility {
 
         System.setProperty("webdriver.chrome.driver", OpenBrowser.CHROME_DRIVER_PATH);
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
+        options.addArguments("--headless");
+        options.addArguments("--window-size=800,600");
+        options.addArguments("--remote-debugging-port=9222");
         options.addArguments("start-maximized"); // open Browser in maximized mode
         options.addArguments("disable-infobars"); // disabling infobars
         options.addArguments("--disable-extensions"); // disabling extensions
@@ -60,7 +62,8 @@ public class DriverUtility {
         //urlKeys.put(OpenBrowser.USERNAME_TEXT_KEY, prop.getProperty(OpenBrowser.USERNAME_TEXT_KEY));
 
 
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
