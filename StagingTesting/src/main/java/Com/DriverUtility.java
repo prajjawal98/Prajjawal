@@ -48,7 +48,7 @@ public class DriverUtility {
 
         ChromeOptions options = new ChromeOptions();
         //options.addArguments("--headless");
-        options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors","--disable-extensions","--no-sandbox","--disable-dev-shm-usage");
+        options.addArguments("--headless",  "--window-size=1920,1200","--ignore-certificate-errors","--disable-extensions");
 
 
         urlKeys.put(OpenBrowser.FORGET_USERNAME_BUTTON_KEY, prop.getProperty(OpenBrowser.FORGET_USERNAME_BUTTON_KEY));
